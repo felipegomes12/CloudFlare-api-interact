@@ -8,8 +8,8 @@ nesse projeto estão disponiveis métodos para criação de multiplos Registros 
 sudo curl -L https://github.com/felipegomes12/CloudFlare-api-interact/archive/refs/heads/main.zip -o /tmp/cloudflare_repo.zip
 sudo unzip -o /tmp/cloudflare_repo.zip -d /opt/
 sudo mv /opt/CloudFlare-api-interact-main /opt/cloudflare_dns
-sudo chmod +x /opt/cloudflare_dns/cloudflare_srv_dns.sh
-echo -e '#!/bin/bash\n/opt/cloudflare_dns/cloudflare_srv_dns.sh "$@"' | sudo tee /usr/local/bin/cloudflare_dns > /dev/null
+sudo chmod +x /opt/cloudflare_dns/cloudflare_dns.sh
+echo -e '#!/bin/bash\n/opt/cloudflare_dns/cloudflare_dns.sh "$@"' | sudo tee /usr/local/bin/cloudflare_dns > /dev/null
 sudo chmod +x /usr/local/bin/cloudflare_dns
 ```
 ## Uso
