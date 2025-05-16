@@ -4,7 +4,7 @@ nesse projeto estão disponiveis métodos para criação de multiplos Registros 
 
 ## Instalação
 
-### Dependencias(se necessário)
+### Dependencias (se necessário)
 ```shell
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y \
