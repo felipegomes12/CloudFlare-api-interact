@@ -157,7 +157,8 @@ def create_a_record():
     print("==========================enviado=======A record========")
     pprint(data)
     print("==========================recebido======================")
-    pprint(resp.json()['result'])
+    pprint(resp.status_code)
+    pprint(resp.text)
     print("==========================raise status==================")
     resp.raise_for_status()
     return resp.json()['result']
@@ -181,10 +182,11 @@ def create_srv_record():
             "name": name,
             "priority": 0,
             "weight": 0,
-            "port": input("Porta: "),
+            "port": int(input("Porta: ")),
             "target": get_name()
         },
-        "ttl": 1
+        "ttl": 1,
+        name: full_name
     }
 
     resp = requests.post(f'{settings.CLOUDFLARE_API_BASE}/zones/{zone_id}/dns_records', headers=settings.HEADERS, json=data)
@@ -194,9 +196,10 @@ def create_srv_record():
     print("==========================fullname======================")
     print(full_name)
     print("==========================resposta======================")
-    pprint(resp.json()['result'])
-    resp.raise_for_status()
+    pprint(resp.status_code)
+    pprint(resp.text)
     print("==========================raise status==================")
+    resp.raise_for_status()
     return resp.json()['result']
 
 if __name__ == "__main__":
