@@ -7,7 +7,7 @@ HEADERS = {
 }
 SETTINGS_PATCH = os.path.abspath(__file__)
 DIR_PATCH = os.path.dirname(SETTINGS_PATCH)
-DEFAULT_DOMAIN = ""
-DEFAULT_CONTENT = ""
-DEFAULT_SRV_NAME = ""
+DEFAULT_DOMAIN = ''
+DEFAULT_CONTENT = ''
+DEFAULT_SRV_NAME = ''
 SETUP = False
