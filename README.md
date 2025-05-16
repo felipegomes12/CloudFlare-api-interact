@@ -36,6 +36,7 @@ create_srv: Cria um registro do tipo SRV.
 - curl 
 - unzip
 - python3
+- python3-venv
 - pip (será instalado automaticamente no primeiro uso, junto com o ambiente virtual)
 - Domínio gerenciado pelo painel da cloudflare
 ## Permições
