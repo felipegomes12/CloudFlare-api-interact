@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Caminho do diretório do script
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-VENV="$DIR/venv"
+PROJECT_DIR="/opt/cloudflare_dns"
+VENV="$PROJECT_DIR/venv"
 
 # Cria o venv se não existir
 if [ ! -d "$VENV" ]; then
@@ -14,30 +14,30 @@ fi
 source "$VENV/bin/activate"
 
 # Instala as dependências se requirements.txt existir
-if [ -f "$DIR/requirements.txt" ]; then
+if [ -f "$PROJECT_DIR/requirements.txt" ]; then
   echo "Instalando dependências..."
   pip install --upgrade pip
-  pip install -r "$DIR/requirements.txt"
+  pip install -r "$PROJECT_DIR/requirements.txt"
 fi
 
 # Executa conforme argumento
 case "$1" in
   "setup")
-    python "$DIR/main.py" setup
+    python "$PROJECT_DIR/main.py" setup
     ;;
   "list")
-    python "$DIR/main.py" list
+    python "$PROJECT_DIR/main.py" list
     ;;
   "create-a")
-    python "$DIR/main.py" create-a
+    python "$PROJECT_DIR/main.py" create-a
     ;;
   "create-srv")
-    python "$DIR/main.py" create-srv
+    python "$PROJECT_DIR/main.py" create-srv
     ;;
   "all")
-    python "$DIR/main.py" setup
-    python "$DIR/main.py" create-a
-    python "$DIR/main.py" create-srv
+    python "$PROJECT_DIR/main.py" setup
+    python "$PROJECT_DIR/main.py" create-a
+    python "$PROJECT_DIR/main.py" create-srv
     ;;
   *)
     echo "Uso: $0 {setup|list|create-a|create-srv|all}"
