@@ -46,8 +46,6 @@ list_dns: Lista os registros DNS atuais.
 create_a: Cria um registro do tipo A.
 
 create_srv: Cria um registro do tipo SRV.
-
-all: Roda todos em sequencia.
 ## Como desinstalar
 ```shell
 rm /usr/local/bin/cloudflare_dns
