@@ -186,7 +186,7 @@ def create_srv_record():
             "target": get_name()
         },
         "ttl": 1,
-        name: full_name
+        "name": full_name
     }
 
     resp = requests.post(f'{settings.CLOUDFLARE_API_BASE}/zones/{zone_id}/dns_records', headers=settings.HEADERS, json=data)
