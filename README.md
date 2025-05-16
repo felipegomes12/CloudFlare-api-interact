@@ -1,6 +1,6 @@
 # CloudFlare api interact
 
-nesse projeto estão disponiveis métodos para criação de multiplos Registros SRV via api do cloudflare que servem para apontar para uma porta especifíca.
+Neste projeto estão disponiveis métodos para criação de multiplos Registros SRV via api do cloudflare que servem para apontar para uma porta especifíca. Este projeto foi pensado tendo em mente o uso para o painel do pterodactyl porém não é limitado a isso, serve para redirecionamento de diversos outros serviços. 
 
 ## Instalação
 
