@@ -29,13 +29,21 @@ Depois da instalação, use o comando global cloudflare_dns com argumentos para 
 cloudflare_dns setup
 ```
 ```shell
-cloudflare_dns list_dns
+cloudflare_dns list
 ```
 ```shell
-cloudflare_dns create_a
+cloudflare_dns create-a
 ```
 ```shell
-cloudflare_dns create_srv
+cloudflare_dns create-srv
+
+```
+```shell
+cloudflare_dns all
+
+```
+```shell
+cloudflare_dns uninstall
 
 ```
 ## O que cada comando faz:
@@ -46,6 +54,10 @@ list_dns: Lista os registros DNS atuais.
 create_a: Cria um registro do tipo A.
 
 create_srv: Cria um registro do tipo SRV.
+
+all: Roda todos em sequencia.
+
+uninstall: desinstala o repositorio e o script.
 ## requerimentos
 - Sitema linux.
 - Acesso ao root ou a senha do root.

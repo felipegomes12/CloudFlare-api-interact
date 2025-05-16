@@ -14,6 +14,7 @@ def load_settings():
 settings = load_settings()
 
 def setup():
+    os.system("clear")
     settings = load_settings()
     print("Setup inicial deve ser concluido antes de utilizar.")
     if settings.CLOUDFLARE_API_TOKEN == 'NOT_SET':
@@ -37,6 +38,7 @@ def setup():
         exit()
 
 def change_token():
+    os.system("clear")
     if not settings.SETUP: setup()
     entrada = input("Token da API do Cloudflare: ")
 
@@ -52,48 +54,29 @@ def change_token():
 
     print("Novo token salvo.")
     
-def get_domain(jump=False):
+def get_domain():
+    os.system("clear")
     if not settings.SETUP: setup()
-    entrada = input("Digite o domínio ou deixe vazio para usar o padrão: ")
-    if entrada and not jump: 
-        define = input("Definir domínio como padrão? (s/n): ")
-        if define.lower() == "s":
-            with open(settings.SETTINGS_PATCH, 'r', encoding='utf-8') as f:
-                conteudo = f.read()
-                conteudo = conteudo.replace(
-                    f"DEFAULT_DOMAIN = '{settings.DEFAULT_DOMAIN}'",
-                    f"DEFAULT_DOMAIN = '{entrada}'"
-                )
-
-            with open(settings.SETTINGS_PATCH, 'w', encoding='utf-8') as f:
-                f.write(conteudo)
-
-            print("Domínio salvo.")
-        elif define.lower() == "n": 
-            pass
-        else: 
-            raise KeyError(f"{define} não é um valor válido") 
-        return entrada
+    if settings.DEFAULT_DOMAIN: return settings.DEFAULT_DOMAIN
     else:
-        if settings.DEFAULT_DOMAIN: return settings.DEFAULT_DOMAIN
-        else:
-            print("Não há um domínio padrão, defina o domínio padrão.")
-            entrada = input("Domínio: ")
-            with open(settings.SETTINGS_PATCH, 'r', encoding='utf-8') as f:
-                conteudo = f.read()
-                conteudo = conteudo.replace(
-                    f"DEFAULT_DOMAIN = '{settings.DEFAULT_DOMAIN}'",
-                    f"DEFAULT_DOMAIN = '{entrada}'"
-                )
+        print("Não há um domínio padrão, defina o domínio padrão.")
+        entrada = input("Domínio: ")
+        with open(settings.SETTINGS_PATCH, 'r', encoding='utf-8') as f:
+            conteudo = f.read()
+            conteudo = conteudo.replace(
+                f"DEFAULT_DOMAIN = '{settings.DEFAULT_DOMAIN}'",
+                f"DEFAULT_DOMAIN = '{entrada}'"
+            )
 
-            with open(settings.SETTINGS_PATCH, 'w', encoding='utf-8') as f:
-                f.write(conteudo)
+        with open(settings.SETTINGS_PATCH, 'w', encoding='utf-8') as f:
+            f.write(conteudo)
 
-            print("Domínio salvo.")
-            return entrada
+        print("Domínio salvo.")
+        return entrada
 
 def get_zone_id(jump):
     """Pega o zone_id a partir do domínio principal."""
+    os.system("clear")
     if not settings.SETUP: setup()
     resp = requests.get(f'{settings.CLOUDFLARE_API_BASE}/zones', headers=settings.HEADERS, params={'name': get_domain(jump)})
     resp.raise_for_status()
@@ -101,6 +84,7 @@ def get_zone_id(jump):
 
 def list_dns_records():
     """Lista todos os registros DNS da zona."""
+    os.system("clear")
     if not settings.SETUP: setup()
     resp = requests.get(f'{settings.CLOUDFLARE_API_BASE}/zones/{get_zone_id(True)}/dns_records', headers=settings.HEADERS)
     resp.raise_for_status()
@@ -108,6 +92,7 @@ def list_dns_records():
     return resp.json()['result']
 
 def get_name():
+    os.system("clear")
     if not settings.SETUP: setup()
     if settings.DEFAULT_SRV_NAME: return settings.DEFAULT_SRV_NAME
     else:
@@ -127,6 +112,7 @@ def get_name():
         return entrada
 
 def get_public_ip():
+    os.system("clear")
     if not settings.SETUP: setup()
     if settings.DEFAULT_CONTENT: return settings.DEFAULT_CONTENT
     else:
@@ -147,6 +133,7 @@ def get_public_ip():
 
 def create_a_record():
     """Cria um registro A se ele não existir."""
+    os.system("clear")
     if not settings.SETUP: setup()
     zone_id = get_zone_id()
     records = list_dns_records()
@@ -170,6 +157,7 @@ def create_a_record():
 
 def create_srv_record():
     """Cria um registro SRV para serviços como Minecraft."""
+    os.system("clear")
     if not settings.SETUP: setup()
     zone_id = get_zone_id()
     service = input("Tipo de serviço sem _ : ")
@@ -196,6 +184,13 @@ def create_srv_record():
     pprint(resp.json()['result'])
     return resp.json()['result']
 
+def uninstall():
+    os.system("clear")
+    caminho_script = '/opt/cloudflare_dns'
+    caminho_rep = '/usr/local/bin/cloudflare_dns'
+    os.system(f'rm {caminho_script}')
+    os.system(f'rm -rf {caminho_rep}')
+    
 if __name__ == "__main__":
     import sys
 
@@ -210,6 +205,7 @@ if __name__ == "__main__":
             - create-a
             - create-srv
             - all
+            - uninstall
               """)
         sys.exit(1)
 
@@ -224,5 +220,7 @@ if __name__ == "__main__":
         create_a_record()
     elif action == "create-srv":
         create_srv_record()
+    elif action == "uninstall":
+        uninstall()
     else:
         print(f"Ação desconhecida: {action}")
