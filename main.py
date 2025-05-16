@@ -99,7 +99,7 @@ def get_name():
         print("Não há um registro A padrão, defina o registro A padrão.")
         entrada = input("Digite o nome do subdomínio (ex: mc ou mc.seudominio.com): ").strip()
         if '.' not in entrada:
-            entrada = f"{entrada}.{settings.DOMAIN}"
+            entrada = f"{entrada}.{settings.DEFAULT_DOMAIN}"
         with open(settings.SETTINGS_PATCH, 'r', encoding='utf-8') as f:
             conteudo = f.read()
             conteudo = conteudo.replace(
