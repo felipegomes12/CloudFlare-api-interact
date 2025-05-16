@@ -60,8 +60,8 @@ all: Roda todos em sequencia.
 uninstall: desinstala o repositorio e o script.
 ## Como desinstalar
 ```shell
-    rm /usr/local/bin/cloudflare_dns
-    rm -rf /opt/cloudflare_dns
+rm /usr/local/bin/cloudflare_dns
+rm -rf /opt/cloudflare_dns
 ``` 
 
 ## Requerimentos
