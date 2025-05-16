@@ -74,11 +74,11 @@ def get_domain():
         print("Domínio salvo.")
         return entrada
 
-def get_zone_id(jump):
+def get_zone_id():
     """Pega o zone_id a partir do domínio principal."""
     os.system("clear")
     if not settings.SETUP: setup()
-    resp = requests.get(f'{settings.CLOUDFLARE_API_BASE}/zones', headers=settings.HEADERS, params={'name': get_domain(jump)})
+    resp = requests.get(f'{settings.CLOUDFLARE_API_BASE}/zones', headers=settings.HEADERS, params={'name': get_domain()})
     resp.raise_for_status()
     return resp.json()['result'][0]['id']
 
@@ -86,7 +86,7 @@ def list_dns_records():
     """Lista todos os registros DNS da zona."""
     os.system("clear")
     if not settings.SETUP: setup()
-    resp = requests.get(f'{settings.CLOUDFLARE_API_BASE}/zones/{get_zone_id(True)}/dns_records', headers=settings.HEADERS)
+    resp = requests.get(f'{settings.CLOUDFLARE_API_BASE}/zones/{get_zone_id()}/dns_records', headers=settings.HEADERS)
     resp.raise_for_status()
     pprint(resp.json()['result'])
     return resp.json()['result']
