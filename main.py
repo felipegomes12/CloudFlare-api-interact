@@ -184,13 +184,6 @@ def create_srv_record():
     pprint(resp.json()['result'])
     return resp.json()['result']
 
-def uninstall():
-    os.system("clear")
-    caminho_script = '/opt/cloudflare_dns'
-    caminho_rep = '/usr/local/bin/cloudflare_dns'
-    os.system(f'rm {caminho_script}')
-    os.system(f'rm -rf {caminho_rep}')
-    
 if __name__ == "__main__":
     import sys
 
@@ -205,7 +198,6 @@ if __name__ == "__main__":
             - create-a
             - create-srv
             - all
-            - uninstall
               """)
         sys.exit(1)
 
@@ -220,7 +212,5 @@ if __name__ == "__main__":
         create_a_record()
     elif action == "create-srv":
         create_srv_record()
-    elif action == "uninstall":
-        uninstall()
     else:
         print(f"Ação desconhecida: {action}")

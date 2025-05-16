@@ -58,7 +58,13 @@ create_srv: Cria um registro do tipo SRV.
 all: Roda todos em sequencia.
 
 uninstall: desinstala o repositorio e o script.
-## requerimentos
+## Como desinstalar
+```shell
+    rm /usr/local/bin/cloudflare_dns
+    rm -rf /opt/cloudflare_dns
+``` 
+
+## Requerimentos
 - Sitema linux.
 - Acesso ao root ou a senha do root.
 - curl 
