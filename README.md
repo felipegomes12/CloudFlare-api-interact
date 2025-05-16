@@ -42,10 +42,6 @@ cloudflare_dns create-srv
 cloudflare_dns all
 
 ```
-```shell
-cloudflare_dns uninstall
-
-```
 ## O que cada comando faz:
 setup: Realiza a configuração inicial e prepara o ambiente virtual (caso ainda não exista).
 
