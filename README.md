@@ -4,6 +4,16 @@ nesse projeto estão disponiveis métodos para criação de multiplos Registros 
 
 ## Instalação
 
+###Dependencias(se necessário)
+```shell
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y \
+curl \
+unzip \
+python3 \
+python3-venv \
+```
+###Rep
 ```bash
 sudo curl -L https://github.com/felipegomes12/CloudFlare-api-interact/archive/refs/heads/main.zip -o /tmp/cloudflare_repo.zip
 sudo unzip -o /tmp/cloudflare_repo.zip -d /opt/
