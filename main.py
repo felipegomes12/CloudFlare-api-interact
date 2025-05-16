@@ -153,8 +153,8 @@ def create_a_record():
         'proxied': False
     }
     resp = requests.post(f'{settings.CLOUDFLARE_API_BASE}/zones/{zone_id}/dns_records', headers=settings.HEADERS, json=data)
-    resp.raise_for_status()
     pprint(resp.json()['result'])
+    resp.raise_for_status()
     return resp.json()['result']
 
 def create_srv_record():
@@ -181,9 +181,10 @@ def create_srv_record():
     }
 
     resp = requests.post(f'{settings.CLOUDFLARE_API_BASE}/zones/{zone_id}/dns_records', headers=settings.HEADERS, json=data)
-    resp.raise_for_status()
+    
     print(full_name)
     pprint(resp.json()['result'])
+    resp.raise_for_status()
     return resp.json()['result']
 
 if __name__ == "__main__":
