@@ -97,7 +97,9 @@ def get_name():
     if settings.DEFAULT_SRV_NAME: return settings.DEFAULT_SRV_NAME
     else:
         print("Não há um registro A padrão, defina o registro A padrão.")
-        entrada = input("Domínio: ")
+        entrada = input("Digite o nome do subdomínio (ex: mc ou mc.seudominio.com): ").strip()
+        if '.' not in entrada:
+            entrada = f"{entrada}.{settings.DOMAIN}"
         with open(settings.SETTINGS_PATCH, 'r', encoding='utf-8') as f:
             conteudo = f.read()
             conteudo = conteudo.replace(
