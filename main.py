@@ -161,7 +161,7 @@ def create_srv_record():
     if not settings.SETUP: setup()
     zone_id = get_zone_id()
     service = input("Tipo de serviço sem _ : ")
-    protocol = input("Proto: ")
+    protocol = input("Proto: sem _ ")
     name = input("Subdominio: ")
     full_name = f"_{service}._{protocol}.{name}"
     data = {
