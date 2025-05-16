@@ -169,7 +169,9 @@ def create_srv_record():
     zone_id = get_zone_id()
     service = input("Tipo de serviço sem _ : ")
     protocol = input("Proto: sem _ ")
-    name = input("Subdominio: ")
+    name = input("Digite o nome do subdomínio (ex: mc ou mc.seudominio.com): ").strip()
+    if '.' not in name:
+            name = f"{name}.{settings.DEFAULT_DOMAIN}"
     full_name = f"_{service}._{protocol}.{name}"
     data = {
         "type": "SRV",
