@@ -38,10 +38,6 @@ cloudflare_dns create-a
 cloudflare_dns create-srv
 
 ```
-```shell
-cloudflare_dns all
-
-```
 ## O que cada comando faz:
 setup: Realiza a configuração inicial e prepara o ambiente virtual (caso ainda não exista).
 
@@ -52,8 +48,6 @@ create_a: Cria um registro do tipo A.
 create_srv: Cria um registro do tipo SRV.
 
 all: Roda todos em sequencia.
-
-uninstall: desinstala o repositorio e o script.
 ## Como desinstalar
 ```shell
 rm /usr/local/bin/cloudflare_dns
