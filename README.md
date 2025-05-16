@@ -27,8 +27,14 @@ sudo chmod +x /usr/local/bin/cloudflare_dns
 Depois da instalação, use o comando global cloudflare_dns com argumentos para executar as funcionalidades disponíveis:
 ```shell
 cloudflare_dns setup
+```
+```shell
 cloudflare_dns list_dns
+```
+```shell
 cloudflare_dns create_a
+```
+```shell
 cloudflare_dns create_srv
 
 ```
